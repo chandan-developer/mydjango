@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Result</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+      </div>
+    </main>
+    {% if data %}
+        {% comment %} <h2>Most frequent used data on this url</h2> {% endcomment %}
+        <h2>Data {%if status == 1 %} processed from Database {%else%} freshly processed {%endif%} </h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Word</th>
+                <th>Frequency</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for word in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{word.0}}</td>
+                    <td>{{word.1}}</td>
+                    {% comment %} <td>Doe</td>
+                    <td>john@example.com</td> {% endcomment %}
+                </tr>
+            {% endfor %}                
+            </tbody>
+        </table>
+    {%else%}
+        <h2>Unable to fecth text from the url.</h2>
+    {% endif %}
+    <a class="button" href="{%url 'frequency' %}">Try for another url</a>
+</div>
+</body>
+</html>

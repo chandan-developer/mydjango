@@ -1,0 +1,16 @@
+{% extends "blog/layout.html" %}
+{% block content %}
+    <h1 class="mb-3"> Users List</h1>
+    {% for user in users %}
+        <article class="media content-section">            
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-posts' user.username  %}">{{ user.username }}</a>              
+            </div>
+            {% comment %} <h2><a class="article-title" href="{% url 'post-detail' obj.id %}">{{ obj.title }}</a></h2>
+            <p class="article-content">{{ obj.content }}</p> {% endcomment %}
+          </div>
+        </article>
+    {% endfor %}    
+
+{% endblock content %}
