@@ -7,7 +7,7 @@ from random import randint
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    num1, num2 = randint(0,10),randint(0,10)
+    num1, num2 = randint(0,10),randint(10,20)
     captcha_value = num1 + num2
     
     captcha = forms.IntegerField(label=f'Are you human?<br> {num1} + {num2} = ?',required=True)

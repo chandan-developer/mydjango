@@ -27,6 +27,7 @@ class Post(models.Model):
         (2, 'Private'),
     )
     visibility = models.IntegerField(choices=visibility_choice, default=1)
+    image = models.ImageField(default="default.jpg", upload_to='posts')
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})

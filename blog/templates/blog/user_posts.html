@@ -9,6 +9,7 @@
               <small class="text-muted" style="color:red">{{ obj.date_posted }}</small>
               <small>{% if obj.visibility == 1 %}Public {% else %}Private{% endif %}</small>
             </div>
+            <img class="rounded-circle article-img" src="{{ obj.image.url }}">
             <h2><a class="article-title" href="{% url 'post-detail' obj.id %}">{{ obj.title }}</a></h2>
             <p class="article-content">{{ obj.content }}</p>
           </div>
