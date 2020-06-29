@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='post',
-            name='visiblity',
+            name='visibility',
             field=models.IntegerField(choices=[(1, 'Public'), (2, 'Private')], default=1, max_length=1),
         ),
     ]
